@@ -1,0 +1,24 @@
+# Core Django Framework
+Django>=5.0,<5.1
+
+# Database Driver & Connection Pooling
+psycopg[binary]>=3.1.18
+
+# Environment Variables & Settings
+python-dotenv>=1.0.1
+
+# Image Processing (Event banners, user avatars, QR processing)
+Pillow>=10.2.0
+
+# QR Code Generation
+qrcode[pil]>=7.4.2
+
+# Payment Gateway Integration
+razorpay>=1.4.1
+
+# Production WSGI / ASGI Servers
+gunicorn>=21.2.0
+
+# HTTP Requests (Webhooks, third-party services)
+requests>=2.31.0
+
