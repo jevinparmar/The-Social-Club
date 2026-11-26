@@ -1,0 +1,104 @@
+{% extends "base/auth_base.html" %}
+
+{% block title %}Create Account | MORROW{% endblock %}
+
+{% block content %}
+<div class="auth-header">
+    <h1 class="auth-title">Create your account</h1>
+    <p class="auth-subtitle">Join MORROW to discover and book events</p>
+</div>
+
+<form method="post" action="{% url 'accounts:register' %}" class="auth-form" id="registerForm" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+        <div class="form-error-banner" role="alert">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="id_full_name" class="form-label">Full Name</label>
+        {{ form.full_name }}
+        {% if form.full_name.errors %}
+            <span class="field-error">{{ form.full_name.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="id_email" class="form-label">Email Address</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <span class="field-error">{{ form.email.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="id_phone_number" class="form-label">Phone Number</label>
+        {{ form.phone_number }}
+        {% if form.phone_number.errors %}
+            <span class="field-error">{{ form.phone_number.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password" class="form-label">Password</label>
+        <div class="password-wrapper">
+            {{ form.password }}
+            <button type="button" class="toggle-password" data-target="id_password" aria-label="Show password">
+                Show
+            </button>
+        </div>
+        <div class="password-checklist" id="passwordChecklist">
+            <label class="password-check-item" id="check-upper">
+                <input type="checkbox" disabled tabindex="-1">
+                <span>Capital letter (A-Z)</span>
+            </label>
+            <label class="password-check-item" id="check-lower">
+                <input type="checkbox" disabled tabindex="-1">
+                <span>Small letter (a-z)</span>
+            </label>
+            <label class="password-check-item" id="check-number">
+                <input type="checkbox" disabled tabindex="-1">
+                <span>Number (0-9)</span>
+            </label>
+            <label class="password-check-item" id="check-special">
+                <input type="checkbox" disabled tabindex="-1">
+                <span>Special character (!@#$...)</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="id_confirm_password" class="form-label">Confirm Password</label>
+        <div class="password-wrapper">
+            {{ form.confirm_password }}
+            <button type="button" class="toggle-password" data-target="id_confirm_password" aria-label="Show password">
+                Show
+            </button>
+        </div>
+        {% if form.confirm_password.errors %}
+            <span class="field-error">{{ form.confirm_password.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group-inline">
+        <label class="checkbox-label" for="id_terms_accepted">
+            {{ form.terms_accepted }}
+            <span>I agree to the Terms and Conditions</span>
+        </label>
+        {% if form.terms_accepted.errors %}
+            <span class="field-error">{{ form.terms_accepted.errors.0 }}</span>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn-primary">Create Account</button>
+</form>
+
+<div class="auth-footer">
+    <p>Already have an account? <a href="{% url 'accounts:login' %}" class="auth-link">Sign in</a></p>
+</div>
+{% endblock %}
+

@@ -11,9 +11,9 @@ urlpatterns = [
     
     # Core system endpoints (health check, landing)
     path("", include("apps.core.urls", namespace="core")),
+    path("", include("apps.accounts.urls", namespace="accounts")),
     
     # App route namespaces
-    path("accounts/", include("apps.accounts.urls", namespace="accounts")),
     path("organizer/", include("apps.organizers.urls", namespace="organizers")),
     path("events/", include("apps.events.urls", namespace="events")),
     path("venues/", include("apps.venues.urls", namespace="venues")),

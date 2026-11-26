@@ -105,6 +105,11 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Custom User & Authentication Settings
+AUTH_USER_MODEL = "accounts.User"
+LOGIN_URL = "/login/"
+LOGOUT_REDIRECT_URL = "/login/"
+
 # Razorpay Configuration Placeholders
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
